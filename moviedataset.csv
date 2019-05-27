@@ -1,0 +1,21 @@
+movie_title,genre,genre_weight_frequency,sequel_movie,director_follower_count_on_twitter,actor_follower_count_on_twitter,actress_follower_count_on_twitter,official_trailer_view_count_on_youtube,official_trailer_comment_count_on_youtube,official_trailer_like_count_on_youtube,official_trailer_dislike_count_on_youtube,gross_income,sentiment_analysis,movie_rating_on_imdb,movie_rating_on_rotten_tomatoes
+"Avengers: Infinity War",Action,0.6,10,867993,36910330,,321944585,655725,5362098,129071,2048359754,pos,8.5,"Top Hit"
+"Black Panther",Action,0.6,1,,2481641,2425432,43789525,54527,444356,17135,1346913161,pos,7.3,"Top Hit"
+"Deadpool 2",Action,0.6,10,7442,14174948,,79064847,61166,1096200,23948,785046920,pos,7.8,"Top Hit"
+"Jurassic World: Fallen Kingdom",Action,0.6,10,,7140820,206587,90491868,94173,878462,45679,1309484461,neu,6.2,Flop
+"The Meg",Action,0.6,1,,313836,,42915487,26207,268176,12651,530243742,neg,5.7,Flop
+Venom,Action,0.6,1,13432,,,145150745,224470,2204524,83782,855013954,neu,6.7,Flop
+"Mission: Impossible - Fallout",Action,0.6,10,72601,6616278,,59724273,38080,514373,15641,791115104,neu,7.8,"Top Hit"
+"Ready Player One",Action,0.6,1,,,,29720482,45376,263684,14356,582890172,neu,7.5,"Top Hit"
+"Incredibles 2",Animation,0.05,10,140320,3672,,55025596,28627,416587,19639,1242805359,pos,7.7,"Top Hit"
+"Bohemian Rhapsody",Biography,0.05,1,234519,678661,6600,33265890,18499,299696,5402,903175016,neu,8.1,Neutral
+"Ant-Man and the Wasp",Action,0.6,10,45464,452196,,46090529,57722,840168,19199,622674139,neu,7.1,"Top Hit"
+"Solo: A Star Wars Story",Action,0.6,10,2549637,2473018,1139599,18391296,32095,213528,27237,392924807,pos,7,Neutral
+"A Quiet Place",Drama,0.05,1,2070382,2070382,67606,21314127,10311,74824,2607,340939361,neu,7.6,"Top Hit"
+"The Predator",Action,0.6,10,31265,764591,,20227065,26592,167467,17860,160542134,neu,5.4,Flop
+"Fantastic Beasts: The Crimes of Grindelwald",Adventure,0.05,10,36777,68139,,27388912,26078,317085,6120,653655901,neg,6.7,Flop
+"A STAR IS BORN",Drama,0.1,1,,1291221,78651336,29831361,19653,209749,5928,434188866,pos,7.8,"Top Hit"
+"The Nun",Horror,0.1,1,8606,37157,686839,40264951,25785,311153,13392,365550119,neu,5.4,Flop
+Halloween,Horror,0.1,1,,,582850,31271954,53113,323017,12437,254285709,neg,6.7,"Top Hit"
+"Ocean's Eight",Action,0.6,1,3129,,11887458,33331261,49983,183875,89506,297718711,neu,6.2,Neutral
+"Mamma Mia! Here We Go Again",Comedy,0.05,1,,,4200586,17095648,6068,84045,7015,394745881,pos,6.8,"Top Hit"

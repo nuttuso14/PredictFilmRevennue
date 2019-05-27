@@ -7,7 +7,7 @@ class NeuralNetwork():
         np.random.seed(1)
         
         #converting weights to a 3 by 1 matrix with values from -1 to 1 and mean of 0
-        self.synaptic_weights = 2 * np.random.random((3, 1)) - 1
+        self.synaptic_weights = 2 * np.random.random((5, 1)) - 1
 
     def sigmoid(self, x):
         #applying the sigmoid function
@@ -50,12 +50,12 @@ if __name__ == "__main__":
     print(neural_network.synaptic_weights)
 
     #training data consisting of 4 examples--3 input values and 1 output
-    training_inputs = np.array([[0,0,1],
-                                [2,1,-1],
-                                [-1,0,2.5],
-                                [0,1,1]])
+    training_inputs = np.array([[10,0.5,2,5.8,4],
+                                [2,-1,0.2,-9,2.03],
+                                [-1,0,2.5,-1,2],
+                                [0,1,1,1,1]])
 
-    training_outputs = np.array([[-1,1,1.5,0]]).T
+    training_outputs = np.array([[20,10,1.5,0.5]]).T
 
     #training taking place
     neural_network.train(training_inputs, training_outputs, 15000)
@@ -66,8 +66,10 @@ if __name__ == "__main__":
     user_input_one = str(input("User Input One: "))
     user_input_two = str(input("User Input Two: "))
     user_input_three = str(input("User Input Three: "))
+    user_input_four = str(input("User Input Four: "))
+    user_input_five = str(input("User Input Five: "))
     
-    print("Considering New Situation: ", user_input_one, user_input_two, user_input_three)
+    print("Considering New Situation: ", user_input_one, user_input_two, user_input_three,user_input_four,user_input_five)
     print("New Output data: ")
-    print(neural_network.think(np.array([user_input_one, user_input_two, user_input_three])))
+    print(neural_network.think(np.array([user_input_one, user_input_two, user_input_three,user_input_four,user_input_five])))
     print("Wow, we did it!")

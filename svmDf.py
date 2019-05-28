@@ -17,6 +17,10 @@ df = pd.DataFrame(Data,columns=['m','n'])
 m = df.m.apply(lambda m: pd.Series(list(m)))
 
 #print(df.y)
+print(m)
+print(type(m))
+print(df.n)
+print(type(df.n))
 
 clf = svm.SVC(gamma='scale')
 sv = clf.fit(m,df.n) 

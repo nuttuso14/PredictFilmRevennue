@@ -1,0 +1,10 @@
+﻿movie_title,genre,genre_weight_frequency,sequel_movie,director_follower_count_on_twitter,actor_follower_count_on_twitter,actress_follower_count_on_twitter,official_trailer_view_count_on_youtube,official_trailer_comment_count_on_youtube,official_trailer_like_count_on_youtube,official_trailer_dislike_count_on_youtube,gross_income,sentiment_analysis,movie_rating_on_imdb,movie_rating_on_rotten_tomatoes
+A,Action,,10,500000,688046,37496,66595304,202074,518110,4096,9102680031,pos,8.8,Top Hit
+B,Action,,0,230300,219,89,891702,992563,28821,2060,525741258,neu,7,Top Hit
+C,Animation,,10,300,28575,17,92173,345189,27525,2645,2015823087,pos,6.8,Neutral
+D,Biography,,0,100,549182,193878,12321069,217782,5000,1390,52412587,neg,5.2,Flop
+E,Drama,,10,225941,3742,4019,4328184,134711,100,534,64215874,neg,5,Flop
+F,Horror,,0,176084,3111,8720,977435,199837,518110,1701,7679601581,neu,6,Top Hit
+G,Horror,,0,199304,3809,2858,16110,3789,50000,609,521458425,neu,6,Neutral
+H,Biography,,0,1000,5222,5220,200000,5222,251,222,45215874,neg,4.4,Flop
+I,Action,,10,500000,50000,50000,10000000,20000,600000,5215,1525412587,pos,7.25,Top Hit

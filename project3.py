@@ -78,15 +78,86 @@ print(trdf)
 tr = trdf.apply(lambda tr: pd.Series(list(tr)))
 #trdf_matrix = trdf.to_numpy()
 #print(trdf_matrix)
-print(tr)
-print(type(trdf))
-print(type(tr))
-print(type(df.movie_rating_on_rotten_tomatoes))
+
+trdf.to_csv('pro3.csv', sep=',')
+
+#test
+
+
+
+df_test = pd.read_csv("test_1.csv") 
+
+#print(movie_types)
+
+#print(df.genre.value_counts()/len(df))
+
+freq2 = df_test.genre.value_counts()/len(df_test)
+
+uq_genre2 = dict(freq2)
+#print(bd['Action'])
+
+
+genre_fq2 =[]
+for n in range(0,len(df_test)):
+    genre_fq2.append(uq_genre2[df_test['genre'].values[n]])
+    #print(df['movie_rating_on_imdb'].values[n])
+
+df_test['genre_fq'] = genre_fq2 
+df_test['director_follower_count_on_twitter'].fillna(0, inplace=True)
+df_test['actor_follower_count_on_twitter'].fillna(0, inplace=True)
+df_test['actress_follower_count_on_twitter'].fillna(0, inplace=True)
+
+sum_direct2 = df_test.director_follower_count_on_twitter.sum()
+sum_actor2 = df_test.actor_follower_count_on_twitter.sum()
+sum_actress2 = df_test.actress_follower_count_on_twitter.sum()
+N_views2 = df_test.official_trailer_view_count_on_youtube.sum()
+N_comments2 = df_test.official_trailer_comment_count_on_youtube.sum()
+
+
+df_test['director_follower_count_on_twitter'] = (df_test['director_follower_count_on_twitter']/sum_direct2)
+df_test['actor_follower_count_on_twitter'] = (df_test['actor_follower_count_on_twitter']/sum_actor2)
+df_test['actress_follower_count_on_twitter'] = (df_test['actress_follower_count_on_twitter']/sum_actress2)
+df_test['official_trailer_view_count_on_youtube'] = (df_test['official_trailer_view_count_on_youtube']/N_views2)
+df_test['official_trailer_comment_count_on_youtube'] = (df_test['official_trailer_comment_count_on_youtube']/N_comments2)
+
+df_test['gross_income'] = (df_test['gross_income']/1000000)
+
+df_test.official_trailer_like_count_on_youtube = df_test.official_trailer_like_count_on_youtube.astype('float64')
+df_test.official_trailer_dislike_count_on_youtube = df_test.official_trailer_dislike_count_on_youtube.astype('float64')
+
+for n in range(0,len(df_test)):
+    N_like2 = df_test['official_trailer_like_count_on_youtube'].values[n]
+    N_dislike2 = df_test['official_trailer_dislike_count_on_youtube'].values[n]
+    Sum_all2 = N_like2 + N_dislike2
+    percent_like2 = N_like/Sum_all2
+    percent_dislike2 = N_dislike2/Sum_all2
+    df_test.at[n,'official_trailer_like_count_on_youtube'] = (percent_like2)
+    df_test.at[n,'official_trailer_dislike_count_on_youtube'] = (percent_dislike2)
+ 
+#sentiment = dict(freq)
+
+#sentiment = {'pos':1, 'neu': 0,'neg': -1}
+#rotten_tomatoes = {'Top Hit':1, 'Neutral': 2,'Flop': 3}
+#print(sentiment['neg'])
+    
+
+for n in range(0,len(df_test)):
+    df_test.at[n,'sentiment_analysis'] = sentiment[df_test['sentiment_analysis'].values[n]]
+    #df.at[n,'movie_rating_on_rotten_tomatoes'] = (rotten_tomatoes[df['movie_rating_on_rotten_tomatoes'].values[n]]-1)/(len(rotten_tomatoes)-1)
+
+
+testdf = df_test.filter(['genre_fq','sequel_movie','director_follower_count_on_twitter','actor_follower_count_on_twitter','actress_follower_count_on_twitter','official_trailer_view_count_on_youtube','official_trailer_comment_count_on_youtube','official_trailer_like_count_on_youtube','official_trailer_dislike_count_on_youtube','movie_rating_on_imdb','sentiment_analysis'],axis=1)
+print(testdf)
+arr_test = testdf.to_numpy()
+#trdf_matrix = trdf.to_numpy()
+#print(trdf_matrix)
+
+
 
 clf = svm.SVC(kernel='linear' ,gamma='scale')
 sv = clf.fit(trdf,df.movie_rating_on_rotten_tomatoes) 
 
-results = clf.predict([[0.6,0,0.5,0.4,0.3,0.8,0.6,0.6,0.4,10,1],[0.5,0,0.4,0.12,0.5,0.4,0.1,0.4,0.6,3.7,-1],[0.14,0,0.2145,0.584,0.124,0.4,0.24,0.5,0.5,6,0]])
+results = clf.predict(arr_test)
 
 print(results)
 print(lab_enc.inverse_transform(results))

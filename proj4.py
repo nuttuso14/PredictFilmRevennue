@@ -3,7 +3,6 @@ from sklearn import preprocessing
 from sklearn import svm 
 
 lab_enc = preprocessing.LabelEncoder()
-
 def create_df(fname):
 
 	df = pd.read_csv(fname) 
@@ -36,6 +35,9 @@ def create_df(fname):
 	df.official_trailer_like_count_on_youtube = df.official_trailer_like_count_on_youtube.astype('float64')
 	df.official_trailer_dislike_count_on_youtube = df.official_trailer_dislike_count_on_youtube.astype('float64')
 	#print(len(df))
+	#df['rotten_translate'] = df['movie_rating_on_rotten_tomatoes']
+	encoded = lab_enc.fit_transform(df['movie_rating_on_rotten_tomatoes'])
+	df['movie_rating_on_rotten_tomatoes'] = encoded
 	for i in range(0,len(df)):
 		#print(i)
 		N_like = df['official_trailer_like_count_on_youtube'].values[i]
@@ -46,16 +48,13 @@ def create_df(fname):
 		#print(percent_like,percent_dislike)
 		df.at[i,'official_trailer_like_count_on_youtube'] = percent_like
 		df.at[i,'official_trailer_dislike_count_on_youtube'] = percent_dislike	
-
-		sentiment = {'pos':1, 'neu': 0,'neg': -1}
 		#print(sentiment['neg'])
 		#print(lab_enc)
-		encoded = lab_enc.fit_transform(df['movie_rating_on_rotten_tomatoes'])
-		df['movie_rating_on_rotten_tomatoes'] = encoded
 		#print(lab_enc.inverse_transform(encoded))
 		#print(df)
         
 	#print(len(df))
+	sentiment = {'pos':1, 'neu': 0,'neg': -1}
 	for x in range(0,len(df)):
 		#print(x)
 		aa = sentiment[df['sentiment_analysis'].values[x]]
@@ -66,7 +65,7 @@ def create_df(fname):
 
 def main():  
 
-	idf = create_df("moviedataset.csv")
+	idf = create_df("moviedataset_40.csv")
 	odf = create_df("test_1.csv")
 
 	#print(idf['official_trailer_like_count_on_youtube'])
@@ -75,8 +74,8 @@ def main():
 	#print(idf)  
 	trdf = idf.filter(['genre_fq','sequel_movie','director_follower_count_on_twitter','actor_follower_count_on_twitter','actress_follower_count_on_twitter','official_trailer_view_count_on_youtube','official_trailer_comment_count_on_youtube','official_trailer_like_count_on_youtube','official_trailer_dislike_count_on_youtube','movie_rating_on_imdb','sentiment_analysis'],axis=1)
 	ttdf = odf.filter(['genre_fq','sequel_movie','director_follower_count_on_twitter','actor_follower_count_on_twitter','actress_follower_count_on_twitter','official_trailer_view_count_on_youtube','official_trailer_comment_count_on_youtube','official_trailer_like_count_on_youtube','official_trailer_dislike_count_on_youtube','movie_rating_on_imdb','sentiment_analysis'],axis=1)
-	trdf.to_csv('pro4.csv', sep=',')
-#print(trdf)
+	#trdf.to_csv('pro4.csv', sep=',')
+    #print(trdf)
 	#df = pd.read_csv("moviedataset.csv") 
 	#normalize(df)
 	#trdf = df.filter(['genre_fq','sequel_movie','director_follower_count_on_twitter','actor_follower_count_on_twitter','actress_follower_count_on_twitter','official_trailer_view_count_on_youtube','official_trailer_comment_count_on_youtube','official_trailer_like_count_on_youtube','official_trailer_dislike_count_on_youtube','movie_rating_on_imdb','sentiment_analysis'],axis=1)
@@ -85,7 +84,21 @@ def main():
 	clf = svm.SVC(kernel='linear' ,gamma='scale')
 	clf.fit(trdf,idf.movie_rating_on_rotten_tomatoes) 
 	results = clf.predict(arr_test)
-	print(lab_enc)
+	#print(lab_enc)
+	#print(odf['rotten_translate'])
+	#lab_enc.fit_transform(odf['rotten_translate']) 
+
 	print(results)
 	print(lab_enc.inverse_transform(results))
+    
+	trdf['title'] = idf['movie_title']
+	trdf['movie_rating_on_rotten_tomatoes'] = idf['movie_rating_on_rotten_tomatoes']
+	trdf['rotten_translate'] = lab_enc.inverse_transform(idf['movie_rating_on_rotten_tomatoes'])
+	trdf['gross_income'] = idf['gross_income']
+	trdf.to_csv('trainning_neural.csv',index=False, sep=',')
+	ttdf['title'] = odf['movie_title']
+	ttdf['Predicted_result'] = results
+	ttdf['rotten_translate'] = lab_enc.inverse_transform(results)
+	ttdf.to_csv('test_neural.csv',index=False, sep=',')
+	#print(lab_enc.inverse_transform(results))
 main()

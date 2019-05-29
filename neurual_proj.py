@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tuesday Oct 2, 2018
-@author: Madhuri Suthar, PhD Candidate in Electrical and Computer Engineering, UCLA
+Created on Tuesday MAY 30, 2019
+@author: Nuntanut Bhooanusas, PhD student in Computer and Communication Engineering
+
+Modified from : Madhuri Suthar, PhD Candidate in Electrical and Computer Engineering, UCLA
 """
 
 # Imports

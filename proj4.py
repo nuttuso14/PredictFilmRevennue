@@ -2,6 +2,8 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn import svm 
 
+lab_enc = preprocessing.LabelEncoder()
+
 def create_df(fname):
 
 	df = pd.read_csv(fname) 
@@ -47,9 +49,10 @@ def create_df(fname):
 
 		sentiment = {'pos':1, 'neu': 0,'neg': -1}
 		#print(sentiment['neg'])
-		lab_enc = preprocessing.LabelEncoder()
+		#print(lab_enc)
 		encoded = lab_enc.fit_transform(df['movie_rating_on_rotten_tomatoes'])
 		df['movie_rating_on_rotten_tomatoes'] = encoded
+		#print(lab_enc.inverse_transform(encoded))
 		#print(df)
         
 	#print(len(df))
@@ -82,6 +85,7 @@ def main():
 	clf = svm.SVC(kernel='linear' ,gamma='scale')
 	clf.fit(trdf,idf.movie_rating_on_rotten_tomatoes) 
 	results = clf.predict(arr_test)
+	print(lab_enc)
 	print(results)
-    
+	print(lab_enc.inverse_transform(results))
 main()

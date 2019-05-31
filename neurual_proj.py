@@ -84,7 +84,7 @@ test = ttdf.to_numpy()
 NN = NeuralNetwork(X,y,test)
 
 
-Lerning_round = 1000000
+Lerning_round = 1050000
 print("wait a few minutes")
 print("There are " ,Lerning_round, " rounds")
 

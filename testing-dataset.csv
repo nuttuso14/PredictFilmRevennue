@@ -1,0 +1,21 @@
+movie_title,genre,genre_weight_frequency,sequel_movie,director_follower_count_on_twitter,actor_follower_count_on_twitter,actress_follower_count_on_twitter,official_trailer_view_count_on_youtube,official_trailer_comment_count_on_youtube,official_trailer_like_count_on_youtube,official_trailer_dislike_count_on_youtube,gross_income,sentiment_analysis,movie_rating_on_imdb,movie_rating_on_rotten_tomatoes
+"Avengers: Endgame",Action,0.4,10,886100,37125082,,216805705,554838,6170456,109233,2688719309,pos,8.8,"Top Hit"
+"The Lion King",Animation,0.15,10,1162495,10439040,,33028327,47616,549828,26034,,neu,,
+"Once Upon a Time ... in Hollywood",Comedy,0.1,1,152788,19050184,1174531,11500412,13143,231963,5153,,neu,9.8,"Top Hit"
+"It Chapter Two",Horror,0.1,1,,48725,781592,36081237,59785,860069,15459,,pos,,
+"Spider-Man: Far From Home",Action,0.4,10,25537,3689459,15252860,103333818,211458,3057070,58575,,neu,,
+"Star Wars: The Rise of Skywalker",Action,0.4,10,101669,11853,1653521,5235251,15293,42154,13559,,pos,,
+"A Beautiful Day in the Neighborhood",Biography,0.05,1,,15855131,15855131,5184950,9817,112710,2575,,pos,,
+"Captain Marvel",Action,0.4,10,1868,8061218,1775396,105507731,266526,2001459,180759,1127259182,pos,7.1,"Top Hit"
+Aladdin,Adventure,0.1,1,35550,50882,157338,37331414,57899,656053,38707,128820000,pos,7.4,Flop
+Us,Horror,0.1,1,1534267,627925,1635654,24459496,30733,253761,10614,174870000,pos,7.2,"Top Hit"
+"Toy Story 4",Animation,0.15,10,7132,15774779,335079,58240925,77750,1224077,50559,,neu,,
+"Honey Boy",Drama,0.1,1,14900,493193,465365,1562212,1215,9540,1380,,neu,,
+"Terminator: Dark Fate",Action,0.4,10,86253,4363758,,16119580,50557,206529,53616,,neu,,
+"John Wick: Chapter 3 - Parabellum",Action,0.4,10,,891,214807,62208273,78513,840433,15135,185579164,neu,8.1,"Top Hit"
+Hellboy,Action,0.4,10,31772,919327,1374122,22928250,41475,245961,49138,21903748,neu,5.4,Flop
+Joker,Drama,0.1,10,,254891,,50648797,111789,1197965,43804,,pos,,
+"Good Boys (II)",Comedy,0.1,10,,98846,4858,836137,1348,14528,623,273339556,pos,6.5,Neutral
+"Frozen II",Animation,0.15,10,13133,3282095,430085,38920968,96330,835366,38180,,neu,6.6,
+Dumbo,Adventure,0.1,10,26994,4506943,51188,16668423,21856,239176,11741,349000240,neu,6.6,Flop
+Shazam!,Action,0.4,10,40021,915232,,63011886,80411,655860,30771,362037385,neu,7.4,"Top Hit"

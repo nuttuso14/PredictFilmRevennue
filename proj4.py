@@ -36,6 +36,9 @@ def create_df(fname):
 	df.official_trailer_dislike_count_on_youtube = df.official_trailer_dislike_count_on_youtube.astype('float64')
 	#print(len(df))
 	#df['rotten_translate'] = df['movie_rating_on_rotten_tomatoes']
+	df['movie_rating_on_rotten_tomatoes'].fillna('Flop', inplace=True)
+	print(df['movie_rating_on_rotten_tomatoes'])
+	df['movie_rating_on_imdb'].fillna(0, inplace=True)
 	encoded = lab_enc.fit_transform(df['movie_rating_on_rotten_tomatoes'])
 	df['movie_rating_on_rotten_tomatoes'] = encoded
 	for i in range(0,len(df)):
@@ -65,8 +68,8 @@ def create_df(fname):
 
 def main():  
 
-	idf = create_df("moviedataset_40.csv")
-	odf = create_df("test_1.csv")
+	idf = create_df("training-dataset.csv")
+	odf = create_df("testing-dataset.csv")
 
 	#print(idf['official_trailer_like_count_on_youtube'])
 	#print(idf['official_trailer_dislike_count_on_youtube'])
